@@ -82,6 +82,7 @@ class Article extends \yii\db\ActiveRecord
      * Gets query for [[Categories]].
      *
      * @return \yii\db\ActiveQuery
+     * @throws \yii\base\InvalidConfigException
      */
     public function getCategories()
     {

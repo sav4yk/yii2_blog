@@ -53,6 +53,7 @@ $config = [
                 'article/create' => 'article/create',
                 'update/<slug:[\w-]+>' => 'article/update',
                 'delete/<slug:[\w-]+>' => 'article/delete',
+                'category/<slug:[\w-]+>' => 'article/category',
                 'set-category/<slug:[\w-]+>' => 'article/set-category',
                 [
                     'pattern' => 'article/<slug:[\w-]+>',

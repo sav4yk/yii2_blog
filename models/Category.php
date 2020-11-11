@@ -73,4 +73,27 @@ class Category extends ActiveRecord
     {
         return $this->hasMany(Article::className(), ['id' => 'article_id'])->viaTable('article_category', ['category_id' => 'id']);
     }
+
+    /**
+     * Gets all categories
+     *
+     * @return string
+     */
+    public function getAllCategories()
+    {
+        return $this->find()->all();
+    }
+
+    /**
+     *  Gets count articles (for each category)
+     *
+     * @return bool|int|string|null
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getArticlesCount()
+    {
+        return $this->getArticles()->count();
+    }
+
+
 }

@@ -6,6 +6,7 @@ use app\models\Category;
 use Yii;
 use app\models\Article;
 use app\models\ArticleSearch;
+use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -41,6 +42,22 @@ class ArticleController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Article models for category.
+     * @return mixed
+     */
+    public function actionCategory($slug)
+    {
+        $model = new Article();
+        $query = $model->find()->joinWith('categories')->where(['category.slug' => $slug]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
     }
